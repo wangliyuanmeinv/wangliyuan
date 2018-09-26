@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+<div id="wrap">
+    <!--头部-->
+    <header id="header">
+        <section class="headerMain">
+            <!--logo-->
+            <h1 class="logo">
+                <a href="javascript:">
+                    <img src="./img/logo.png" alt="">
+                </a>
+            </h1>
+            <!--导航-->
+            <ul class="list">
+                <li>
+                    <a href="javascript:">
+                        <div class="up"><img src="./img/home_gruen.png" alt=""></div>
+                        <div class="down"><img src="./img/home.png" alt=""></div>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:">
+                        <div class="up">Course</div>
+                        <div class="down">Course</div>
+
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:">
+                        <div class="up">Works</div>
+                        <div class="down">Works</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:">
+                        <div class="up">About</div>
+                        <div class="down">About</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:">
+                        <div class="up">Team</div>
+                        <div class="down">Team</div>
+                    </a>
+                </li>
+            </ul>
+            <!--小箭头-->
+            <div class="arrow"></div>
+        </section>
+    </header>
+    <!--内容区-->
+    <section id="content">
+        <ul class="contentMain">
+            <li>
+                <section class="home">Home</section>
+            </li>
+            <li>
+                <section class="course">course</section>
+            </li>
+            <li>
+                <section class="works">
+                    <h2 class="works_title commonTitle">
+                        <span>EINBLICK</span><br/>
+                        <span>ERKENNTNIS</span><br/>
+                        <span>ERGEBNIS</span>
+                    </h2>
+                    <ul class="works_list clearfix">
+                        <li>
+                            <img src="./img/worksimg1.jpg" alt="worksimg1">
+                            <div class="mask">
+                                <span>我有一头晓飞张</span>
+                                <div class="icon"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/worksimg2.jpg" alt="worksimg1">
+                            <div class="mask">
+                                <span>我从来也不骑</span>
+                                <div class="icon"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/worksimg3.jpg" alt="worksimg1">
+                            <div class="mask">
+                                <span>有一天心血来潮</span>
+                                <div class="icon"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/worksimg4.jpg" alt="worksimg1">
+                            <div class="mask">
+                                <span>骑ta去赶集</span>
+                                <div class="icon"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="works_robot"></div>
+                </section>
+            </li>
+            <li>
+                <section class="about">about</section>
+            </li>
+            <li>
+                <section class="team">team</section>
+            </li>
+
+
+        </ul>
+        </section>
+
+</div>
+<script type="text/javascript">
+    window.onload=function(){
+    //    获取dom元素
+    //    头部dom
+        var liNodes=document.querySelectorAll('#header .headerMain .list li');
+        var upNodes=document.querySelectorAll('#header .headerMain .list li .up');
+        var arrowNode=document.querySelector('#header .headerMain .arrow');
+    //    内容区dom
+        var contentNode=document.querySelector('#content');
+        var ulNode=document.querySelector('#content .contentMain');
+    //    初始化下标0
+        var nowIndex=0;
+    //    滚轮节流函数的timer
+        var wheelTimer=null;
+    //    用户缩放浏览器事件
+        window.onresize=function () {
+        //    修正小箭头的位置
+            arrowNode.style.left=liNodes[nowIndex].getBoundingClientRect().left+
+                    liNodes[nowIndex].offsetWidth/2
+            -arrowNode.offsetWidth/2+'px';
+        //    更新ul的位置
+            ulNode.style.top=nowIndex*contentNode.offsetHeight+'px';
+
+        }
+    //    头部js代码
+        headerHandle();
+        function headerHandle(){
+        //    初始化小箭头来到第一个up元素下面
+            arrowNode.style.left=liNodes[0].getBoundingClientRect().left+liNodes[0].offsetWidth/2
+            -arrowNode.offsetWidth/2+'px';
+        //    初始化时第一个up元素宽度为100%；
+            upNodes[0].style.width='100%';
+        //    给每个li元素绑定点击事件
+            for(var i=0; i<liNodes.length; i++){
+                liNodes[i].index=i;
+                liNodes[i].onclick=function (){
+                //    将nowIndex修改当前点击li元素的下标
+                    nowIndex=this.index;
+                    move(nowIndex);
+                }
+
+                }
+            }
+        //函数节流
+        // 在一段时间内，用户会多次触发同一个函数，只让第一次生效，后面的无效
+        //*函数防抖
+        // 在一段时间内用户会多次触发同一个函数，只让最后一次生效，前面的无效
+        //意义：为了优化性能，少调用js函数
+        move(2);
+        function move(nowIndex) {
+        //    清除所有up的宽度 将宽度改为0
+            for(var j=0; j<upNodes.length; j++){
+                upNodes[j].style.width='';
+
+         }
+        // 将当前点击的元素的宽度改为100%；
+            upNodes[nowIndex].style.width=100%;
+        //    改变小箭头的位置
+            arrowNode.style.left=liNodes[nowIndex].getBoundingClientRect().left+
+                    liNodes[nowIndex].offsetWidth/2
+            -arrowNode.offsetWidth/2+'px';
+        //    改变内容区ul的top值
+            ulNode.style.top=-nowIndex*contentNode.offsetHeight+'px';
+        }
+    //    滚轮事件
+    //    ie/chrome
+        document.onmousewheel=wheel;
+    //    firefox
+        i{
+            document.addEventListener('DOMMouseScroll',wheel);
+        }
+        function wheel(event) {
+        //    函数防抖
+        //    一上来清除延时定时器
+            clearTimeout(wheelTimer);
+        //    设置了延时定时器来推迟函数的调用
+            wheelTimer=setTimeout(function (){
+            //    判断用户向上滑还是向下滑
+                var flag=null;
+                if (event.wheelDelta){
+                    if (event.wheelDelta>0){
+                    //    向上滑
+                        flag='up';
+
+                    }else{
+                    //    向下滑
+                        flag='down';
+                    }
+                } else if (event.detail) {
+                    if (event.detail<0){
+                    //    向上滑
+                        flag='up'
+                    } else{
+                    //    向下滑
+                        flag='down';
+                    }
+                }
+                swich (flag){
+                    case 'up' :
+                        if (nowIndex>0){
+                            nowIndex--;
+                            move(nowIndex);
+                        }
+                        break;
+                        case 'down';
+                        if (nowIndex<liNodes.length-1){
+                            nowIndex++;
+                            move(nowIndex);
+                        }
+                        break;
+                }
+            },200)
+
+        }
+    }
+</script>
+</body>
+</html>

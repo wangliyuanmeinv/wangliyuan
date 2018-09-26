@@ -1,0 +1,456 @@
+/* reset css */
+html,body{height: 100%;overflow: hidden;}
+html,body,h1,h2,h3,h4,h5,h6,p,ul,li{margin: 0px;padding: 0px;font: 14px "微软雅黑";}
+a{text-decoration: none;display: block;}
+li{list-style: none;}
+img{display: block;}
+
+/* clearfix */
+.clearfix{*zoom: 1;}
+.clearfix:after{content: "";display: block;clear: both;}
+
+/*common style*/
+.commonTitle{
+    color:#009ee0;
+    font-size:80px;
+    line-height:0.8;
+    font-weight:bold;
+    letter-spacing:-5px;
+}
+
+#wrap{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/*头部样式*/
+#header{
+    position: relative;
+    width: 100%;
+    height: 80px;
+}
+#header .headerMain{
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+}
+#header .headerMain .logo{
+    margin-top: 15px;
+    float: left;
+}
+#header .headerMain .list{
+    margin-top: 50px;
+    float: right;
+}
+#header .headerMain .list li{
+    position: relative;
+    float: left;
+    margin-left: 40px;
+}
+#header .headerMain .list li .up{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    color: #000;
+    overflow: hidden;
+    transition: width 1s;
+}
+#header .headerMain .list li .down{
+    color: #009EE0;
+}
+
+#header .headerMain .list li:hover .up{
+    /*width: 100%!important;*/
+    width: 100%;
+}
+
+/*小箭头*/
+#header .headerMain .arrow{
+    position: absolute;
+    left: 50%;
+    bottom: -11px;
+    z-index: 99;
+    /*margin-left: -10.5px;*/
+    width: 21px;
+    height: 11px;
+    background-image: url('../img/arrow.png');
+    background-repeat: no-repeat;
+    transition: left 1s;
+}
+
+/*内容区*/
+#content{
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+#content .contentMain{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 500%;
+    transition: top 1s;
+}
+
+#content .contentMain li{
+    position: relative;
+    width: 100%;
+    height: 20%;
+    background-repeat: no-repeat;
+}
+
+#content .contentMain li section{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 1100px;
+    height: 520px;
+    background: #bfa;
+}
+
+#content .contentMain li:nth-child(1){
+    background-image: url('../img/bg1.jpg');
+}
+#content .contentMain li:nth-child(2){
+    background-image: url('../img/bg2.jpg');
+}
+#content .contentMain li:nth-child(3){
+    background-image: url('../img/bg3.jpg');
+}
+#content .contentMain li:nth-child(4){
+    background-image: url('../img/bg4.jpg');
+}
+#content .contentMain li:nth-child(5){
+    background-image: url('../img/bg5.jpg');
+}
+
+/*第三屏*/
+#content .contentMain .works .works_title{
+    margin: 50px 0 100px 50px;
+}
+
+#content .contentMain .works .works_list{
+    margin-left: 50px;
+}
+#content .contentMain .works .works_list>li{
+    position: relative;
+    float: left;
+    width: 220px;
+    height: 133px;
+    margin-right: 1px;
+    overflow: hidden;
+}
+#content .contentMain .works .works_list>li:last-child{
+    width: 332px;
+}
+
+#content .contentMain .works .works_list>li .mask{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(25,25,25,0.8);
+    color: #fff;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 1s;
+}
+#content .contentMain .works .works_list>li>img{
+    transition: transform 1s;
+}
+#content .contentMain .works .works_list>li .mask .icon{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -16px;
+    margin-top: -17px;
+    width: 32px;
+    height: 34px;
+    background-image: url('../img/zoomico.png');
+    background-repeat: no-repeat;
+    transition: background-position 1s;
+}
+
+#content .contentMain .works .works_list>li:hover .mask{
+    opacity: 1;
+}
+
+#content .contentMain .works .works_list>li:hover .mask .icon{
+    background-position: 0 -34px;
+}
+
+#content .contentMain .works .works_list>li:hover>img{
+    transform: rotate(30deg) scale(1.5);
+}
+
+#content .contentMain .works .works_robot{
+    position: absolute;
+    left: 900px;
+    top: 170px;
+    width: 167px;
+    height: 191px;
+    background-image: url('../img/robot.png');
+    background-repeat: no-repeat;
+    animation: 5s robotMove infinite linear;
+}
+
+@keyframes robotMove {
+    0%{transform: rotateY(0deg)}
+    49%{left: 45%;transform: rotateY(0deg)}
+    50%{left: 45%;transform: rotateY(180deg)}
+    100%{transform: rotateY(180deg)}
+/*第四屏*/
+#content .contentMain .about .about_title{
+margin: 50px 0 100px 50px;}
+#content .contentMain .about .about_content{
+    margin-left: 50px;
+    width: 400px;
+}
+#content .contentMain .about .about_line{
+ position: absolute;
+    top: -16px;
+    left:50%;
+    width: 357px;
+    height: 998px;
+    background-image: url("../img/greenLine.png");
+    background-repeat: no-repeat;
+}
+#content .contentMain .about .about_list>li{
+    position: absolute;
+    z-index: 10;
+    width: 260px;
+    height: 200px;
+    border:5px solid rgba(255,255,255,0.5) ;
+    border-radius: 8px;
+}
+#content .contentMain .about .about_list>li:first-child{
+    left: 750px;
+    top: 50px;}
+#content .contentMain .about .about_list>li:last-child{
+    left: 600px;
+    top: 290px;
+}
+#content .contentMain .about .about_list>li>img{
+    width: 100%;
+    height: 100%;
+}
+#content .contentMain .about .about_list>li>ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+/*图片炸裂效果
+1 将4个li位置定好
+2 将4个li中div中背景图设好
+3 当鼠标移入ul，四个div发生的位置变化
+*/
+/*将四个li位置定好*/
+#content .contentMain .about .about_list>li>ul>li{
+    float: left;
+    width: 50%;
+    height: 50%;
+overflow: hidden;
+}
+/*2.将四个li中div中背景图设好*/
+#content .contentMain .about .about_list>li>ul>li>div{
+    width:100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    transition: transform 1s;
+}
+/*第一屏*/
+#content .contentMain .home .home_list{
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+#content .contentMain .home .home_list>li{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+
+}
+#content .contentMain .home .home_list>li.active{
+visibility: visible;
+}
+#content .contentMain .home .home_list>li:nth-child(1){
+    background: #dc6c5f;
+}
+#content .contentMain .home .home_list>li:nth-child(2){
+    background: #95dc84;
+}
+#content .contentMain .home .home_list>li:nth-child(3){
+    background: #64b9d2;
+}
+#content .contentMain .home .home_list>li:nth-child(3){
+    background: #000000;
+}
+#content .contentMain .home .home_list>li>div{
+    width: 100%;
+    height: 100%;
+    line-height: 520px;
+    text-align: center;
+    color: #ffffff;
+}
+#content .contentMain .home .home_points{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#content .contentMain .home .home_points>li{
+    float: left;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    margin: 2px;
+    box-shadow: 0 0 4px rgba(25,25,25,0.8);
+}
+#content .contentMain .home .home_points>li.active{
+    background: #ffffff;
+}
+/*点击左边小圆点
+左边从隐藏到显示，从后面到前面，走左边
+右边从显示到隐藏，从前面到后面，走右边*/
+#content .contentMain .home .home_list>li.leftShow{
+visibility: visible;
+    animation:2s leftShow linear;
+}
+#content .contentMain .home .home_list>li.rightHide{
+    visibility: hidden;
+    animation: 2s rightHide linear;
+}
+@keyframes leftShow {
+    0%{visibility: hidden;transform:translateZ(-200px)}
+    50%{transform: translateX(-40%) rotateY(30deg) scale(.8)}
+    100%{}
+}
+
+@keyframes rightHide {
+
+    0%{visibility: visible}
+    50%{transform: translateX(40%) rotateY(-30deg) scale(.8)}
+    100%{transform: translateZ(-200px)}
+
+
+}
+/*第二屏*/
+#content .contentMain .course .course_title{
+    margin: 50px;
+}
+#content .contentMain .course .course_content{
+    width: 400px;
+    margin-left: 50px;
+}
+#content .contentMain .course .course_photo{
+    position: absolute;
+    right: 50px;
+    top: 70px;
+    width: 480px;
+}
+#content .contentMain .course .course_photo .course_list>li{
+    position: relative;
+    float: left;
+    width: 120px;
+    height: 132px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+}
+#content .contentMain .course .course_photo .course_list>li>div{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    transition: transform 2s;
+    backface-visibility: hidden;
+}
+#content .contentMain .course .course_photo .course_list>li>.front{
+    background-image: url("../img/pcwelt.png");
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+#content .contentMain .course .course_photo .course_list>li>.back{
+    transform: rotateY(180deg);
+    background: #009ee0;
+    padding: 15px;
+    box-sizing: border-box;
+}
+#content .contentMain .course .course_photo .course_list>li:hover .back{
+    transform: rotateY(360deg);
+}
+#content .contentMain .course .course_photo .course_list>li:hover .front{
+    transform: rotateY(180deg);
+}
+#content .contentMain .course .course_photo .line{
+    position: absolute;
+    top: -5px;
+    width: 9px;
+
+    height: 410px;
+    background-image: url("../img/plus_row.png");
+    background-repeat: no-repeat;
+}
+#content .contentMain .course .course_photo .line:nth-child(1){left: -6px;}
+#content .contentMain .course .course_photo .line:nth-child(2){left:114px;}
+#content .contentMain .course .course_photo .line:nth-child(3){left: 234px;}
+#content .contentMain .course .course_photo .line:nth-child(4){left: 354px;}
+#content .contentMain .course .course_photo .line:nth-child(5){left: 474px;}
+
+/*第五屏*/
+#content .contentMain .team .team_title{
+    float: left;
+    margin: 50px;
+}
+#content .contentMain .team .team_content{
+    float: right;
+    width: 400px;
+    margin: 50px;
+}
+#content .contentMain .team .team_person{
+    position: absolute;
+    top: 230px;
+    left: 50%;
+    margin-left: -472px;
+    width: 994px;
+    height: 448px;
+}
+#content .contentMain .team .team_person>li{
+    float: left;
+    width: 236px;
+    height: 100%;
+    background-image: url("../img/team.png");
+    background-repeat: no-repeat;
+}
+#content .contentMain .team .team_person>li:nth-child(1){
+background-position: 3px 0px;
+}
+#content .contentMain .team .team_person>li:nth-child(2){
+    background-position:230px 0px;
+;
+}
+#content .contentMain .team .team_person>li:nth-child(3){
+    background-position: 483px 0px;
+}
+#content .contentMain .team .team_person>li:nth-child(4){
+    background-position: 710px 0px;
+}
